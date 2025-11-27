@@ -52,3 +52,7 @@ class TestCalculator:
         assert calc.get_stack() == []
         calc.add(2, 3)
         assert calc.get_last_result() == 5
+
+    def test_negate(self):
+        calc = Calculator()
+        assert calc.negate(1) == -1
