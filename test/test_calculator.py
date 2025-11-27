@@ -58,7 +58,7 @@ class TestCalculator:
 
     def test_get_last_result_empty(self):
         calc = Calculator()
-        assert calc.get_last_result() == None
+        assert calc.get_last_result() is None
 
     def test_negate(self):
         calc = Calculator()
