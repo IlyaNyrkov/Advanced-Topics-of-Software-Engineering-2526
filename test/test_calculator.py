@@ -18,6 +18,8 @@ class TestCalculator:
 
     def test_divide(self):
         calc = Calculator()
+        with pytest.raises(ValueError):
+            calc.divide(10, 0)
         assert calc.divide(10, 1) == 10
 
     def test_power(self):
@@ -29,6 +31,7 @@ class TestCalculator:
         calc = Calculator()
         with pytest.raises(ValueError):
             calc.square_root(-4)
+        assert calc.square_root(4) == 2
 
     def test_factorial_requires_integer(self):
         calc = Calculator()
@@ -53,6 +56,34 @@ class TestCalculator:
         calc.add(2, 3)
         assert calc.get_last_result() == 5
 
+    def test_get_last_result_empty(self):
+        calc = Calculator()
+        assert calc.get_last_result() == None
+
     def test_negate(self):
         calc = Calculator()
         assert calc.negate(1) == -1
+
+    def test_abs_neg(self):
+        calc = Calculator()
+        assert calc.absolute(-1) == 1
+
+    def test_abs_pos(self):
+        calc = Calculator()
+        assert calc.absolute(1) == 1
+
+    def test_modulo(self):
+        calc = Calculator()
+        with pytest.raises(ValueError):
+            calc.modulo(4, 0)
+        assert calc.modulo(4, 2) == 0
+
+    def test_is_even(self):
+        calc = Calculator()
+        with pytest.raises(ValueError):
+            calc.is_even(4.5)
+        assert calc.is_even(2)
+
+    def test_gcd(self):
+        calc = Calculator()
+        assert calc.gcd(8, 4) == 4
